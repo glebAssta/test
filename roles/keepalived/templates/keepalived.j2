@@ -1,0 +1,37 @@
+vrrp_instance VI_1 {
+        {% for web, web_state in ansible_state.items() %}
+        state {{ web_state.stat }}
+        {% endfor %}
+        interface eth0
+        virtual_router_id 51
+        priority 255
+        advert_int 1
+        authentication {
+              auth_type PASS
+              auth_pass 12345
+        }
+        virtual_ipaddress {
+        {% for ip, ip_state in ansible_virtual_ip.items() %}
+        {{ ip_state.ip }}/24
+        {% endfor %}
+        }
+}
+
+vrrp_instance VI_2 {
+        {% for web, web_state in ansible_state.items() %}
+        state {{ web_state.stat }}
+        {% endfor %}
+        interface eth0
+        virtual_router_id 51
+        priority 255
+        advert_int 1
+        authentication {
+              auth_type PASS
+              auth_pass 12345
+        }
+        virtual_ipaddress {
+        {% for ip, ip_state in ansible_virtual_ip.items() %}
+        {{ ip_state.ip }}/24
+        {% endfor %}
+        }
+}

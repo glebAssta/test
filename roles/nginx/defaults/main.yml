@@ -1,0 +1,14 @@
+---
+seasons:
+  winter:
+    temperature: -10
+  spring:
+    temperature: +15
+  autumn:
+    temperature: +10
+  summer:
+    temperature: +20
+source_folder: default.j2
+dest_folder: /etc/nginx
+html_dest_folder: /var/www/html
+nginx_user: www-data

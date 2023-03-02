@@ -1,0 +1,6 @@
+[loadbalancers]
+ha1 ansible_host=68.183.75.227 ansible_user=root
+ha2 ansible_host=159.89.102.92 ansible_user=root
+[webservers]
+web1 ansible_host=159.89.97.21 ansible_user=root
+web2 ansible_host=146.86.32.71 ansible_user=root

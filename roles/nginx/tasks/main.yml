@@ -1,0 +1,38 @@
+---
+- name: install nginx
+  apt:
+    update_cache: yes
+    name: nginx
+
+- name: start nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: download index.HTML
+  template:
+    src: index.html.j2
+    dest: "{{ html_dest_folder }}/index.html"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: download templates
+  template:
+    src: default.j2
+    dest: "{{ dest_folder }}/conf.d"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Reload nginx
+
+
+- name: update default conf
+  template:
+    src: nginx.j2
+    dest: "{{ dest_folder }}/nginx.conf"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Reload nginx

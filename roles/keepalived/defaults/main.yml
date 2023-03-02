@@ -1,0 +1,12 @@
+---
+ansible_state:
+  web1:
+    stat: "MASTER"
+  web2:
+    stat: "BACKUP"
+
+ansible_virtual_ip:
+  web1:
+    ip: "{{ ansible_host }}"
+  web2:
+    ip: "{{ ansible_host }}"

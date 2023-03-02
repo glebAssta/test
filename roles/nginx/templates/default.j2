@@ -1,0 +1,4 @@
+server {
+  listen 1024 default_server;
+  server name {{ ansible_hostname }}{{ ansible_default_ipv4.address }};
+}

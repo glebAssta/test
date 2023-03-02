@@ -1,0 +1,14 @@
+---
+- name: "Configure Load balancer"
+  apt:
+    update_cache: yes
+    name: haproxy
+
+- name: download haproxy.cfg
+  template:
+    src: haproxy.j2
+    dest: "/etc/haproxy/haproxy.cfg"
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload haproxy

@@ -1,0 +1,15 @@
+---
+- name: set up webserver
+  hosts: webservers
+  roles:
+    - nginx
+
+- name: install ha-proxy
+  hosts: loadbalancers
+  roles:
+    - ha-proxy
+
+- name: install keepalived
+  hosts: loadbalancers
+  roles:
+    - keepalived
